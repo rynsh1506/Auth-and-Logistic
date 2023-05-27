@@ -1,0 +1,219 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Backend App API",
+        "version": "1.0.0"
+    },
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "auth",
+            "description": "Endpoint for user authentication"
+        },
+        {
+            "name": "logistic",
+            "description": "Endpoint for logistic data"
+        }
+    ],
+    "paths": {
+        "/auth/register": {
+            "post": {
+                "tags": ["auth"],
+                "summary": "Register a new user",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "msisdn": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully"
+                    },
+                    "400": {
+                        "description": "Username or msisdn already exists"
+                    },
+                    "500": {
+                        "description": "MSISDN must contain 62"
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": ["auth"],
+                "summary": "User login",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "msisdn": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login successful",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "token": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "User not found"
+                    },
+                    "401": {
+                        "description": "Invalid password"
+                    }
+                }
+            }
+        },
+        "/logistic/rates": {
+            "get": {
+                "tags": ["logistic"],
+                "summary": "Fetch logistic rates",
+                "responses": {
+                    "200": {
+                        "description": "Logistic rates",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "rates": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "logistic_name": {
+                                                        "type": "string"
+                                                    },
+                                                    "amount": {
+                                                        "type": "number"
+                                                    },
+                                                    "destination_name": {
+                                                        "type": "string"
+                                                    },
+                                                    "origin_name": {
+                                                        "type": "string"
+                                                    },
+                                                    "duration": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/logistic/data": {
+            "get": {
+                "tags": ["logistic"],
+                "summary": "Get logistic data by origin and destination",
+                "parameters": [
+                    {
+                        "name": "origin_name",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "destination_name",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "duration",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logistic data",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "logisticData": {
+                                    "type": "object",
+                                    "properties": {
+                                        "logistic_name": {
+                                            "type": "string"
+                                        },
+                                        "amount": {
+                                            "type": "number"
+                                        },
+                                        "destination_name": {
+                                            "type": "string"
+                                        },
+                                        "origin_name": {
+                                            "type": "string"
+                                        },
+                                        "duration": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Logistic data not found"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
