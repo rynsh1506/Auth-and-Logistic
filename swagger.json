@@ -100,6 +100,50 @@
                 }
             }
         },
+        "/logistic/add": {
+            "post": {
+                "tags": ["logistic"],
+                "summary": "Add logistic data",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "logistic_name": {
+                                    "type": "string"
+                                },
+                                "amount": {
+                                    "type": "number"
+                                },
+                                "destination_name": {
+                                    "type": "string"
+                                },
+                                "origin_name": {
+                                    "type": "string"
+                                },
+                                "duration": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logistic data added successfully"
+                    },
+                    "401": {
+                        "description": "Invalid token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
         "/logistic/rates": {
             "get": {
                 "tags": ["logistic"],
