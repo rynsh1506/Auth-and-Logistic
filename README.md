@@ -6,7 +6,9 @@
 2. Buka terminal dan arahkan ke direktori repositori.
 3. Jalankan perintah `npm/yarn install` untuk menginstal semua dependensi.
 4. Setelah instalasi selesai, jalankan perintah `npm/yarn dev` untuk menjalankan aplikasi.
-5. Aplikasi akan berjalan di `http://localhost:3000`.
+5. Aplikasi akan berjalan di `http://localhost:8000`.
+6. Tidak usah setup database jika aplikasi berjalan dengan lancar, 
+jika tidak periksa invitation project di MongoDB `constrea@gmail.com` or `michael@orderfaz.com` 
 
 ## Endpoint
 
@@ -46,4 +48,3 @@
     - Mengembalikan data asal dan tujuan dari database sesuai parameter yang diberikan.
     - Mengembalikan respons dengan status 200 dan data logistik jika berhasil.
     - Mengembalikan respons dengan status 404 dan pesan "Logistic data not found" jika data tidak ditemukan.
-# Auth-and-Logistic
