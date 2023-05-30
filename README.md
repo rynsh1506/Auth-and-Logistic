@@ -52,7 +52,7 @@
     - Mengembalikan respons dengan status 404 dan pesan "Logistic data not found" jika data tidak ditemukan.
     - Mengembalikan respons dengan status 401 dan pesan "Token mising" jika token tidak ada
 
-3. **GET /api/logistic/add**
+3. **POST /api/logistic/add**
     - Menerima parameter `logistic_name`, `amount`, `destination_name`, `origin_name` dan `duration`
     - Menambahkan data logistic dengan parameter yang sesuai
     - Mengembalikan respons dengan status 200 dan pesan "Logistic data added successfully" jika logistic berhasil di tambahkan
