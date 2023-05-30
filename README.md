@@ -30,11 +30,6 @@
     - Menghasilkan JWT dengan isi private claim `id` dari database.
     - Mengembalikan respons dengan status 200 dan token JWT jika berhasil.
 
-3. **GET /api/auth/userinfo**
-    - Memeriksa apakah JWT yang diberikan valid.
-    - Mengembalikan respons dengan status 200 dan data pengguna (id, msisdn, name, username) jika JWT valid.
-    - Mengembalikan respons dengan status 401 dan pesan "Invalid token" jika JWT tidak valid.
-
 ### Logistic
 
 1. **GET /api/logistic/rates**
