@@ -8,7 +8,7 @@
 4. Setelah instalasi selesai, jalankan perintah `npm/yarn dev` untuk menjalankan aplikasi.
 5. Aplikasi akan berjalan di `http://localhost:8000`.
 6. Tidak usah setup database jika aplikasi berjalan dengan lancar,
-   jika tidak periksa invitation project di MongoDB `constrea@gmail.com` or `michael@orderfaz.com`
+
 
 ## Endpoint
 
